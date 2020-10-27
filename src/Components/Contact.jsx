@@ -1,66 +1,108 @@
-import React from 'react';
-import NavLink from 'react-router-dom';
+import React, { useState } from "react";
+
 const Contact = () => {
-    return (
-        <>
-            <section class="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
-                <h1>get in <span>touch</span></h1>
-                <span class="title-bg">contact</span>
-            </section>
-            <section class="main-content revealator-slideup revealator-once revealator-delay1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-lg-4">
-                            <h3 class="text-uppercase custom-title mb-0 ft-wt-600 pb-3">Don't be shy !</h3>
-                            <p class="open-sans-font mb-3">Feel free to get in touch with me. I am always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
-                            <p class="open-sans-font custom-span-contact position-relative">
-                                <i class="fa fa-envelope-open position-absolute"></i>
-                                <span class="d-block">mail me</span>steve@mail.com
-                    </p>
-                            <p class="open-sans-font custom-span-contact position-relative">
-                                <i class="fa fa-phone-square position-absolute"></i>
-                                <span class="d-block">call me</span>+216 21 184 010
-                    </p>
-                            <ul class="social list-unstyled pt-1 mb-5">
-                                <li class="facebook"><NavLink title="Facebook" to="#"><i class="fa fa-facebook"></i></NavLink>
-                                </li>
-                                <li class="twitter"><NavLink title="Twitter" to="#"><i class="fa fa-twitter"></i></NavLink>
-                                </li>
-                                <li class="youtube"><NavLink title="Youtube" to="#"><i class="fa fa-youtube"></i></NavLink>
-                                </li>
-                                <li class="dribbble"><NavLink title="Dribbble" to="#"><i class="fa fa-dribbble"></i></NavLink>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-lg-8">
-                            <form class="contactform" method="post" action="http://slimhamdi.net/tunis/dark/php/process-form.php">
-                                <div class="contactform">
-                                    <div class="row">
-                                        <div class="col-12 col-md-4">
-                                            <input type="text" name="name" placeholder="YOUR NAME" />
-                                        </div>
-                                        <div class="col-12 col-md-4">
-                                            <input type="email" name="email" placeholder="YOUR EMAIL" />
-                                        </div>
-                                        <div class="col-12 col-md-4">
-                                            <input type="text" name="subject" placeholder="YOUR SUBJECT" />
-                                        </div>
-                                        <div class="col-12">
-                                            <textarea name="message" placeholder="YOUR MESSAGE"></textarea>
-                                            <button type="submit" class="btn btn-contact">Send Message</button>
-                                        </div>
-                                        <div class="col-12 form-message">
-                                            <span class="output_message text-center font-weight-600 text-uppercase"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </>
-    )
-}
+  const [data, setData] = useState({
+    fullname: "",
+    phone: "",
+    email: "",
+    msg: "",
+  });
+
+  const InputEvent = (event) => {
+    const { name, value } = event.target;
+
+    setData((preVal) => {
+      return {
+        ...preVal,
+        [name]: value,
+      };
+    });
+  };
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+    alert(
+      `My name is ${data.fullname}. My mobile number is ${data.phone} and email is ${data.email}, Here is what I watn to say ${data.msg}`
+    );
+  };
+
+  return (
+    <>
+      <div className="my-5">
+        <h1 className="text-center"> Contact US </h1>
+      </div>
+      <div className="container contact_div">
+        <div className="row">
+          <div className="col-md-6 col-10 mx-auto">
+            <form onSubmit={formSubmit}>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">
+                  FullName
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  name="fullname"
+                  value={data.fullname}
+                  onChange={InputEvent}
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">
+                  Phone
+                </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  name="phone"
+                  value={data.phone}
+                  onChange={InputEvent}
+                  placeholder="mobile number"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  name="email"
+                  value={data.email}
+                  onChange={InputEvent}
+                  placeholder="name@example.com"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">
+                  Message
+                </label>
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="msg"
+                  value={data.msg}
+                  onChange={InputEvent}
+                ></textarea>
+              </div>
+
+              <div class="col-12">
+                <button class="btn btn-outline-primary" type="submit">
+                  Submit form
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Contact;

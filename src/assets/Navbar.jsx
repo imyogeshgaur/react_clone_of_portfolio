@@ -1,64 +1,82 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom';
-import Home from '../Components/Home';
-import About from '../Components/About';
-import Contact from '../Components/Contact';
-import Portfolio from '../Components/Portfolio';
-import Blog from '../Components/Blog';
-const Navbar = () => {
-    return (
-        <>
-            <header class="header" id="navbar-collapse-toggle">
-                <ul class="icon-menu d-none d-lg-block revealator-slideup revealator-once revealator-delay1">
-                    <li class="icon-box">
-                        <i class="fa fa-home"></i>
-                        <NavLink to={Home}>
-                            <h2>Home</h2>
-                        </NavLink>
-                    </li>
-                    <li class="icon-box active">
-                        <i class="fa fa-user"></i>
-                        <NavLink to={About}>
-                            <h2>About</h2>
-                        </NavLink>
-                    </li>
-                    <li class="icon-box">
-                        <i class="fa fa-briefcase"></i>
-                        <NavLink to={Portfolio}>
-                            <h2>Portfolio</h2>
-                        </NavLink>
-                    </li>
-                    <li class="icon-box">
-                        <i class="fa fa-envelope-open"></i>
-                        <NavLink to={Contact}>
-                            <h2>Contact</h2>
-                        </NavLink>
-                    </li>
-                    <li class="icon-box">
-                        <i class="fa fa-comments"></i>
-                        <NavLink to={Blog}>
-                            <h2>Blog</h2>
-                        </NavLink>
-                    </li>
-                </ul>
-                <nav role="navigation" class="d-block d-lg-none">
-                    <div id="menuToggle">
-                        <input type="checkbox" />
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <ul class="list-unstyled" id="menu">
-                            <li><NavLink to={Home}><i class="fa fa-home"></i><span>Home</span></NavLink></li>
-                            <li class="active"><NavLink to={About}><i class="fa fa-user"></i><span>About</span></NavLink></li>
-                            <li><NavLink to={Portfolio}><i class="fa fa-folder-open"></i><span>Portfolio</span></NavLink></li>
-                            <li><NavLink to={Contact}><i class="fa fa-envelope-open"></i><span>Contact</span></NavLink></li>
-                            <li><NavLink to={Blog}><i class="fa fa-comments"></i><span>Blog</span></NavLink></li>
-                        </ul>
-                    </div>
-                </nav>
-            </header>
-        </>
-    )
-}
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-export default Navbar
+const Navbar = () => {
+  return (
+    <>
+      <div className="container-fluid nav_bg">
+        <div className="row">
+          <div className="col-10 mx-auto">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+              <div className="container-fluid">
+                <NavLink className="navbar-brand" to="/">
+                  Yogesh Gaur
+                </NavLink>
+                <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+                <div
+                  className="collapse navbar-collapse"
+                  id="navbarSupportedContent"
+                >
+                  <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <li className="nav-item">
+                      <NavLink
+                        activeClassName="menu_active"
+                        exact
+                        className="nav-link active"
+                        aria-current="page"
+                        to="/"
+                      >
+                        Home
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink
+                        activeClassName="menu_active"
+                        className="nav-link"
+                        to="/service"
+                      >
+                        Services
+                      </NavLink>
+                    </li>
+
+                    <li className="nav-item">
+                      <NavLink
+                        activeClassName="menu_active"
+                        className="nav-link"
+                        to="/about"
+                      >
+                        About
+                      </NavLink>
+                    </li>
+
+                    <li className="nav-item">
+                      <NavLink
+                        activeClassName="menu_active"
+                        className="nav-link"
+                        to="/contact"
+                      >
+                        Contact
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Navbar;
